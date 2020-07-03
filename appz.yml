@@ -1,0 +1,24 @@
+app:
+  name: LogCollectorDB
+  code: LCDB
+  notify: pprasannan@cloudbourne.co
+build:
+  version: 2.9
+  env: DEV
+  build_file: none
+  output_files: output/*.zip
+  image_template: mongo-3.2
+  image_name: nutanix/log-collector-db
+deploy:
+  context: nutanix/DEV
+  replicas: 1
+  port:
+  - 27017
+volumes:
+- claim: mongo-data
+  mount: /appz/data
+  name: data
+monitor:
+  notify: pprasannan@cloudbourne.co   
+properties:
+  revision : 01
