@@ -4,18 +4,18 @@ app:
   notify: pprasannan@cloudbourne.co
 build:
   version: 2.9
-  env: DEV
+  env: GL
   build_file: none
   output_files: output/*.zip
-  image_template: mongo-3.2
+  image_template: mongo-3.4
   image_name: nutanix/log-collector-db
 deploy:
-  context: nutanix/DEV
+  context: nutanix/GL
   replicas: 1
   port:
   - 27017
 volumes:
-- claim: mongo-data
+- claim: mongograylog-data
   mount: /appz/data
   name: data
 monitor:
